@@ -49,6 +49,20 @@ def tjarnikovaatom():
     response.headers['Content-Type'] = 'application/atom+xml'
     return response
 
+@app.route("/kocourovo-rss")
+def kocourovorss():
+    atom_xml = render_template('Unoficial kocourovo RSS-rss.xml')
+    response = make_response(atom_xml)
+    response.headers['Content-Type'] = 'application/rss+xml'
+    return response
+
+@app.route("/kocourovo-atom")
+def kocourovoatom():
+    atom_xml = render_template('Unoficial kocourovo RSS-atom.xml')
+    response = make_response(atom_xml)
+    response.headers['Content-Type'] = 'application/atom+xml'
+    return response
+
 @app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),

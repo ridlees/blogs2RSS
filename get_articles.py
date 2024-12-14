@@ -30,6 +30,12 @@ def parse_articles(page, subtype):
             entry = articleEntry(article.text,article.get("href"))
             entries.append(entry)
         return entries
+    if subtype == "kocour":
+        for p in page.find_all("p"):
+            article = p.find("a")
+            entry = articleEntry(article.text,article.get("href"))
+            entries.append(entry)
+        return entries
 
 def get_articles(url, subtype):
     page = soup(get(url))
@@ -37,10 +43,13 @@ def get_articles(url, subtype):
     return entries
     
 if __name__ == "__main__":
-    urls = ["https://tjarnikova.github.io/cti.html","https://skvrnami.github.io/log/"]
+    urls = ["https://tjarnikova.github.io/cti.html","https://skvrnami.github.io/log","http://blog.kocourovo.eu"]
     articles1 = get_articles(urls[0],"tjan")
     for article in articles1:
         print(article.title)
     articles2 = get_articles(urls[1],"skvrnami")
     for article in articles2:
+        print(article.title)
+    articles3 = get_articles(urls[2], "kocour")
+    for article in articles3:
         print(article.title)

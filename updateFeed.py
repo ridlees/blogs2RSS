@@ -25,7 +25,7 @@ def generateFeed(fg_id, fg_title, fg_description, articles):
 
 
 if __name__ == "__main__":
-    urls = ["https://tjarnikova.github.io/cti.html","https://skvrnami.github.io/log/"]
+    urls = ["https://tjarnikova.github.io/cti.html","https://skvrnami.github.io/log/", "http://blog.kocourovo.eu"]
     generateFeed('001','Unoficial tjarnikova RSS',"Unoficial tjarnikova RSS created by Martin K.", get_articles.get_articles(urls[0],"tjan"))
     generateFeed('002','Unoficial skvrnami RSS',"Unoficial skvrnami RSS created by Martin K.", get_articles.get_articles(urls[1],"skvrnami"))
-
+    generateFeed("004", "Unoficial kocourovo RSS", "Unoficial kocourovo RSS created by Martin K.", get_articles.get_articles(urls[2],"kocour"))
